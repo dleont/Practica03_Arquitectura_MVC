@@ -303,7 +303,7 @@ public class Principal {
                                 System.out.println("Ingrese el tiempo de gestacion");
                                 ave.setTiempoGest(leer.nextLine());
                                 ave.setTiempoGest(leer.nextLine());
-                                
+
                                 aveCon.create(ave);
                                 System.out.println("Se ha creado el ave " + ave.getNombre()
                                         + " con el codigo" + ave.getCodigo());
@@ -314,22 +314,22 @@ public class Principal {
                                 System.out.println(" ");
                                 System.out.println("LEYENDO...");
                                 System.out.println(" Ingrese el codigo del ave");
-                                int cod2 = leer.nextInt();
+                                int codA = leer.nextInt();
 
-                                System.out.println(aveCon.read(cod2));
+                                System.out.println(aveCon.read(codA));
                                 break;
 
                             case 3://update ave
                                 Ave aveU = new Ave();
                                 System.out.println(" ");
-                                System.out.println(" Ingrese el NOMBRE  del ave a modificar");
+                                System.out.println(" Ingrese el nombre  del ave a modificar");
                                 aveU.setNombre(leer.nextLine());
-
+                                aveU.setNombre(leer.nextLine());
+                                
                                 aveCon.update(aveU);
 
                                 System.out.println(" ACTUALIZANDO...");
                                 System.out.println(" Ingrese el nombre");
-                                aveU.setNombre(leer.nextLine());
                                 aveU.setNombre(leer.nextLine());
                                 System.out.println("Ingrese tipo de animal");
                                 aveU.setTipoAnimal(leer.nextLine());
@@ -345,7 +345,7 @@ public class Principal {
                                 System.out.println("Ingrese el tiempo de gestacion");
                                 aveU.setTiempoGest(leer.nextLine());
                                 aveU.setTiempoGest(leer.nextLine());
-
+                                                          
                                 aveCon.update(aveU);
 
                                 System.out.println("Se han actualizado los datos correctamente");
@@ -373,7 +373,6 @@ public class Principal {
                     } while (opA != 2);
 
                 //case 4:
-
             }
 
         } while (op != 5);
