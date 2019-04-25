@@ -81,10 +81,8 @@ public class Ave extends Animal {
                 "tipo de Ave=" + tipoAve + ", tamaño= " + tamaño + ", tiempo de Gestacion= " + tiempoGest;
     }
 
-    @Override
-    public int compareTo(Animal o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+    
     
    
 }

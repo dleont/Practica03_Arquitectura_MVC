@@ -23,13 +23,13 @@ public class ControladorAve {
    
     public ControladorAve(){
         listaAve = new TreeSet<>();
-        cod = 1; 
+        cod = 0; 
 }
     
     public void create(Ave ave) {
+        cod++;
         ave.setCodigo(cod);
         listaAve.add(ave);
-        cod++;
     }
     
      /**
@@ -40,12 +40,8 @@ public class ControladorAve {
      */
     public Ave read(int codigo) {
         for (Ave aveR : listaAve) {
-            if (aveR.getCodigo()==codigo) {
+            if (aveR.getCodigo()== codigo) {
                 return aveR;
-            }else{
-                if(aveR.getCodigo()!=codigo){
-                    System.out.println(" El codigo del ave no existe o ya fue eliminado");
-                }
             }
         } 
         return null;
@@ -54,7 +50,6 @@ public class ControladorAve {
     public Ave update(Ave aveU){
             if (listaAve.contains(aveU)) { 
                 listaAve.remove(aveU);
-                aveU.setCodigo(cod); ///implemente esto para ver si sale el mismo codigo al momento de actualizar
                 listaAve.add(aveU); 
             }
         return null;
@@ -76,13 +71,9 @@ public class ControladorAve {
    
     public void imprimir(){
         for (Ave aveI : listaAve) {
-            //imprime todo el objeto
             System.out.println(aveI);
         }
     }
-    
-    
-    
-    
+     
     
 }

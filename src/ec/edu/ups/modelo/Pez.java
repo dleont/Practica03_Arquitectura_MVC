@@ -85,11 +85,4 @@ public class Pez extends Animal {
     }
     
     
-    @Override
-    public int compareTo(Animal o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
 }

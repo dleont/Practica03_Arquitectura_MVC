@@ -80,7 +80,7 @@ public abstract class Animal implements Comparable<Animal> {
                 ", tipo Animal= " + tipoAnimal + ", sexo= " + sexo ;
     }
 
-    //
+    //Set
     @Override
     public int hashCode() {
         int hash = 5;
@@ -105,12 +105,12 @@ public abstract class Animal implements Comparable<Animal> {
         }
         return true;
     }
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public int compareTo(Animal o) {
+        return nombre.compareTo(o.nombre);
+    }
+
     
     
 }
