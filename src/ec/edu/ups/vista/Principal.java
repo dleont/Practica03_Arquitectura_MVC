@@ -6,7 +6,9 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorMamifero;
+import ec.edu.ups.controlador.ControladorPez;
 import ec.edu.ups.modelo.Mamifero;
+import ec.edu.ups.modelo.Pez;
 import java.util.Scanner;
 
 /**
@@ -18,13 +20,16 @@ public class Principal {
 
     public static void main(String[] args) {
 
+        //Variables que sirven para los subMenus de las clases.
         int op;
         int opM;
         int opP;
         int opA;
         int opR;
         
-        ControladorMamifero mamiferoC = new ControladorMamifero();
+        //Instanciando clases controladores para acceder a sus constrcutores (CRUD)
+        ControladorMamifero mamiferoCon = new ControladorMamifero();
+        ControladorPez pezCon = new ControladorPez();
        
         do {
 
@@ -33,6 +38,7 @@ public class Principal {
             System.out.println("2. CRUD> Pez");
             System.out.println("3. CRUD> Ave");
             System.out.println("4. CRUD> Reptil");
+            System.out.println("5. SALIR ");
 
             Scanner leer = new Scanner(System.in);
             op = leer.nextInt();
@@ -77,7 +83,7 @@ public class Principal {
                                 mamifero.setPeso(leer.nextDouble());
 
                                 //llamamos al metodo create en la clase Controlador.
-                                mamiferoC.create(mamifero);
+                                mamiferoCon.create(mamifero);
                                 System.out.println(" Se ha creado un mamifero "+
                                         mamifero.getNombre()+" con el codigo: " + mamifero.getCodigo());
                                 break;
@@ -91,7 +97,7 @@ public class Principal {
                                 int cod2 = leer.nextInt();
                                 
                                 System.out.println(" ");
-                                System.out.println(mamiferoC.read(cod2));
+                                System.out.println(mamiferoCon.read(cod2));
 
                                 break;
                                 
@@ -102,7 +108,7 @@ public class Principal {
                                 Mamifero mamiferoU = new Mamifero();
                                 System.out.println("Ingresar codigo del mamifero a modificar ");
                                 mamiferoU.setCodigo(leer.nextInt()); 
-                                mamiferoC.update(mamiferoU);
+                                mamiferoCon.update(mamiferoU);
 
                                 System.out.println("Ingresar nombre:");
                                 mamiferoU.setNombre(leer.nextLine());
@@ -123,7 +129,7 @@ public class Principal {
                                 mamiferoU.setPeso(leer.nextDouble());
                                 
                                 //llama al metodo update de la clase ControladorAuto.
-                                mamiferoC.update(mamiferoU);
+                                mamiferoCon.update(mamiferoU);
                                 System.out.println("Se han actualizado los datos del mamifero de codigo "
                                         + mamiferoU.getCodigo());
 
@@ -137,7 +143,7 @@ public class Principal {
                                 System.out.println(" Ingrese el nombre del mamifero a eliminar ");                                
                                 int cod = leer.nextInt();
                                 //lllama al metodo elimnar de la clase ControladorAuto
-                                mamiferoC.delete(cod);
+                                mamiferoCon.delete(cod);
                                 System.out.println("Se a eliminado el mamifero " + " del codigo " + cod);
 
                                 break;
@@ -149,20 +155,21 @@ public class Principal {
                                 System.out.println(" Desea listar 1.Si  2.No");
                                 int lis = leer.nextInt();
                                 //mamifero.listar(leer.nextInt());
-                                mamiferoC.listar(lis);
+                                mamiferoCon.listar(lis);
                                 
                                 break;
 
                         }
                         System.out.println(" ");
-                        System.out.println("Regresar al Menu = 1.SI / 2.NO");
+                        System.out.println("Continuar en la clase Mamifero = 1.SI / 2.NO");
                         opM = leer.nextInt();
 
-                    } while (opM != 1);
+                    } while (opM != 2);
                     break;
 
+                 //Clase HIJA 2 interface HASHSET y CRUD.
                 case 2:
-                    /* do {
+                     do {
                         System.out.println(" ►► Pez ◄◄");
                         System.out.println("1. CREATE ");
                         System.out.println("2. READ ");
@@ -170,14 +177,101 @@ public class Principal {
                         System.out.println("4. DELETE ");
                         System.out.println("5. LIST ");
                         System.out.println("6. REGRESAR ");
+                        
+                        opP = leer.nextInt();
+                        switch(opP){
+                            case 1: //create pez
+                                Pez pez = new Pez();
+                                System.out.println(" CREANDO...");
+                                System.out.println(" Ingrese nombre");
+                                pez.setNombre(leer.nextLine());
+                                pez.setNombre(leer.nextLine());
+                                System.out.println("Ingrese tipo de animal");
+                                pez.setTipoAnimal(leer.nextLine());
+                                System.out.println(" Ingrese el sexo");
+                                pez.setSexo(leer.nextLine());
+                                
+                                System.out.println("Ingrese el tipo de pez");
+                                pez.setTipoPez(leer.nextLine());
+                                System.out.println("Ingrese el tipo de esqueleto ");
+                                pez.setTipoEsqueleto(leer.nextLine());
+                                System.out.println("Ingrese el tamaño");
+                                pez.setTamaño(leer.nextDouble());
+                                System.out.println("Ingrese el peso");
+                                pez.setPeso(leer.nextDouble());
+                                
+                                pezCon.create(pez);
+                                System.out.println(" Se ha creado el pez "+pez.getNombre()
+                                +" con codigo "+pez.getCodigo());
+                                
+                                break;
+                            case 2: //read pez
+                                System.out.println(" ");
+                                System.out.println(" LEYENDO... ");
+                                System.out.println("Ingrese el codigo del pez");
+                                int cod = leer.nextInt();
+                                
+                                System.out.println(" ");
+                                //Imprimiendo el objeto 
+                                System.out.println(pezCon.read(cod));
+                                
+                                break;
+                            case 3://update pez
+                                Pez pezU = new Pez();
+                                System.out.println(" ");
+                                System.out.println(" Ingrese el codigo del pez a modificar");
+                                pezU.setCodigo(leer.nextInt());
+                                
+                                pezCon.update(pezU);
+                                
+                                System.out.println(" ACTUALIZANDO...");
+                                System.out.println(" Ingrese nombre");
+                                pezU.setNombre(leer.nextLine());
+                                pezU.setNombre(leer.nextLine());
+                                System.out.println("Ingrese tipo de animal");
+                                pezU.setTipoAnimal(leer.nextLine());
+                                System.out.println(" Ingrese el sexo");
+                                pezU.setSexo(leer.nextLine());
+                                
+                                System.out.println("Ingrese el tipo de pez");
+                                pezU.setTipoPez(leer.nextLine());
+                                System.out.println("Ingrese el tipo de esqueleto ");
+                                pezU.setTipoEsqueleto(leer.nextLine());
+                                System.out.println("Ingrese el tamaño");
+                                pezU.setTamaño(leer.nextDouble());
+                                System.out.println("Ingrese el peso");
+                                pezU.setPeso(leer.nextDouble());
+                                
+                                System.out.println(" Los datos se han actualizado correctamente");
 
-                        // opP = leer.nextInt();
-                    }*/
+                                break;
+                            case 4://delete pez
+                                
+                                Pez pezD = new Pez();
+                                System.out.println(" ELIMINANDO...");
+                                System.out.println(" Ingrese el codigo");
+                                pezD.setCodigo(leer.nextInt());
+                                
+                                pezCon.delete(pezD);
+                                System.out.println(" Se ha eliminado el pez de codigo "+pezD.getCodigo());
+                                
+                                break;
+                            case 5://list pez
+                                System.out.println(" LISTANDO...");
+                                pezCon.imprimir();
+                                
+                                break;
+   
+                        }
+                         System.out.println(" ");
+                         System.out.println(" Continuar en la clase PEZ=  1.Si  2.No");
+                        opP = leer.nextInt();
+                    }while(opP!=2);
                     break;
-
+               
             }
 
-        } while (op != 2);
+        } while (op != 5);
 
     }
 }
